@@ -1,0 +1,49 @@
+<div id="webcrumbs">
+  <div class="form-container">
+    <div class="row logo-container">
+      <div class="col">
+        <div class="header-container">
+          <div class="title-container">
+            <h2>
+              <span class="title">Traffic</span>
+              <span class="subtitle">Check</span>
+            </h2>
+          </div>
+          <div class="logo-div">
+            <img src="/assets/iconeTIM.png" alt="TIM" class="logo" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="executeRequest()" class="form">
+      <div class="form-group">
+        <div class="input-container">
+          <label>MSISDN</label>
+          <input type="text" formControlName="msisdn" pTooltip="Enter the MSISDN number" tooltipPosition="right" placeholder="Ex: 5511999999999, 5511988888888" />
+        </div>
+        <div class="input-container">
+          <label>TPS</label>
+          <input type="number" formControlName="tps" placeholder="Number of transactions per second" />
+        </div>
+        <div class="input-container">
+          <label>Profile Number</label>
+          <input type="number" pInputText formControlName="profileNumber" pTooltip="'1' for 5G and 4G; '2' for 3G, '3' for 2G" tooltipPosition="right" placeholder="Profile number" />
+        </div>
+        <div class="input-container">
+          <label>Code Region</label>
+          <input type="text" formControlName="codeRegion" placeholder="RJO; SPO; RJ-Lab" />
+        </div>
+      </div>
+      <div class="result-container">
+        <textarea placeholder="Results will appear here..." [value]="results" readonly></textarea>
+        <ngx-spinner bdColor = "rgba(10,10,15,0.8)" size = "medium" color = "#ffff" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: white" > Carregando... </p></ngx-spinner>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="execute-btn">Execute</button>
+        <button type="button" (click)="clearForm()" class="clear-btn">Clear</button>
+      </div>
+    </form>
+    
+  </div>
+</div>
