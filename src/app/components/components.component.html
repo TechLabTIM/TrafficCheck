@@ -1,4 +1,5 @@
 <div id="webcrumbs">
+  <div *ngIf="loading" class="loading-overlay">  <div class="spinner"></div> </div>
   <div class="form-container">
     <div class="row logo-container">
       <div class="col">
@@ -37,7 +38,7 @@
       </div>
       <div class="result-container">
         <textarea placeholder="Results will appear here..." [value]="results" readonly></textarea>
-        <ngx-spinner bdColor = "rgba(10,10,15,0.8)" size = "medium" color = "#ffff" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: white" > Carregando... </p></ngx-spinner>
+        
       </div>
       <div class="button-group">
         <button type="submit" class="execute-btn">Execute</button>

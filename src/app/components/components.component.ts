@@ -12,14 +12,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   selector: 'app-components',
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.css'],
-  providers: [LbsService, NgxSpinnerService],
+  providers: [LbsService],
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, Tooltip, InputTextModule, NgxSpinnerModule]
 })
 export class ComponentsComponent implements OnInit {
   myForm: FormGroup;
   results: string = '';
-  hasData: boolean = false;
+  loading: boolean = false;
 
   constructor(private lelListDataService: LbsService,
     private spinner: NgxSpinnerService, 
@@ -38,7 +38,7 @@ export class ComponentsComponent implements OnInit {
   }
 
   executeRequest(): void {
-    this.spinner.show();
+    this.loading = true;
     const msisdnInput = this.myForm.value.msisdn.split(',').map((item: string) => item.trim());
     const iterations = parseInt(this.myForm.value.tps, 10);
     const profileNumber = parseInt(this.myForm.value.profileNumber, 10);
@@ -47,13 +47,13 @@ export class ComponentsComponent implements OnInit {
     this.lelListDataService.makeSimpleRequest(msisdnInput, iterations, profileNumber, codeRegion).subscribe({
       next: (response: any) => {
         this.results = JSON.stringify(response, null, 2);
-        this.hasData = true;
-        this.spinner.hide();
+        this.loading = false;
+        
       },
       error: (error: { message: any; }) => {
         this.results = `Error: ${error.message}`;
-        this.hasData = false;
-        this.spinner.hide();
+        this.loading = false;
+        
       }
     });
   }
