@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: production-runner
+    runs-on: self-hosted
 
     strategy:
       matrix:
