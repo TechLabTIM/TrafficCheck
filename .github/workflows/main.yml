@@ -28,8 +28,11 @@ jobs:
         run: npm ci
 
       # Increase the Angular budget limit dynamically in angular.json
-      - name: Increase Angular budget limit
-        run: sed -i 's/"maximumError":"1\.00mb"/"maximumError":"1.50mb"/g' angular.json
+      - name: Increase Angular Budget Limit
+        run: |
+         sed -i 's/"maximumError": "1\.00mb"/"maximumError": "1.50mb"/g' angular.json
+         cat angular.json
+
 
       # Build Angular in production mode to reduce bundle size
       - name: Build Angular App
