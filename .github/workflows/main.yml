@@ -28,7 +28,12 @@ jobs:
         run: npm ci
         
       - name: Build for Production
-        run: npm run build -- --configuration=production --output-path=dist/traffic-finding/browser
+        run: |
+          npm run build -- --configuration=production --output-path=dist/traffic-finding
+          if [ ! -d "dist/traffic-finding" ]; then
+            echo "❌ Build failed! 'dist/traffic-finding' folder is missing."
+            exit 1
+          fi
 
       - name: Ensure Deployment Directory Exists
         run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
