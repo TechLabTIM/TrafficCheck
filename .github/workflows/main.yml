@@ -35,16 +35,16 @@ jobs:
             exit 1
           fi
 
-      - name: Ensure Deployment Directory Exists
-        run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
+      #- name: Ensure Deployment Directory Exists
+       # run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
 
-      - name: Deploy Application
-        run: |
-          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S rm -rf /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/browser
-          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S cp -r dist/traffic-finding/browser /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
+      #- name: Deploy Application
+       # run: |
+        #  echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S rm -rf /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/browser
+         # echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S cp -r dist/traffic-finding/browser /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
 
-      - name: Set Correct Permissions
-        run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S chown -R www-data:www-data /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist
+      #- name: Set Correct Permissions
+       # run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S chown -R www-data:www-data /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist
 
       - name: Restart Nginx
         run: echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S systemctl restart nginx
