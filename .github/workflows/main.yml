@@ -26,6 +26,23 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-      - run: npm run build --configuration=production --output-path=dist/traffic-finding/browser
+        
+      - name: Build for Production
+        run: npm run build -- --configuration=production --output-path=dist/traffic-finding/browser
+
+      - name: Ensure Deployment Directory Exists
+        run: |
+          sudo mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
+
+      - name: Deploy Application
+        run: |
+          sudo rm -rf /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/browser
+          sudo cp -r dist/traffic-finding/browser /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
+
+      - name: Set Correct Permissions
+        run: sudo chown -R www-data:www-data /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist
+
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
 
 
