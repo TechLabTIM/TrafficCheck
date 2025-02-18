@@ -31,8 +31,7 @@ jobs:
         run: npm run build -- --configuration=production --output-path=dist/traffic-finding/browser
 
       - name: Ensure Deployment Directory Exists
-        run: |
-          sudo mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
+        run: echo "Tim@123" | sudo -S mkdir -p /home/admin-kube/actions-runner-front/_work/TrafficCheck/TrafficCheck/dist/traffic-finding/
 
       - name: Deploy Application
         run: |
