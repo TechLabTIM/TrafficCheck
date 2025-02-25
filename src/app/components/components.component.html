@@ -6,8 +6,8 @@
         <div class="header-container">
           <div class="title-container">
             <h2>
-              <span class="title">Traffic</span>
-              <span class="subtitle">Check</span>
+              <span class="title">Online Testing API Device Location</span>
+              <span class="subtitle"> - TIMLAB</span>
             </h2>
           </div>
           <div class="logo-div">
@@ -36,14 +36,15 @@
           <input type="text" formControlName="codeRegion" placeholder="RJO; SPO; RJ-Lab" />
         </div>
       </div>
-      <div class="result-container">
-        <textarea placeholder="Results will appear here..." [value]="results" readonly></textarea>
-        
-      </div>
       <div class="button-group">
         <button type="submit" class="execute-btn">Execute</button>
         <button type="button" (click)="clearForm()" class="clear-btn">Clear</button>
       </div>
+      <div class="result-container">
+        <textarea placeholder="Results will appear here..." [value]="results" readonly></textarea>
+      </div>
+      <app-map [results]="mapResults"></app-map>
+      
     </form>
     
   </div>
