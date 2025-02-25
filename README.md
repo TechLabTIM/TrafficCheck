@@ -4,9 +4,8 @@
 This project provides a real-time location testing API, allowing users to fetch geographical device locations based on multiple parameters. It combines robust backend functionality written in .NET with a dynamic and responsive frontend built using Angular.
 
 ## Technologies
-- **Backend**: .NET Core 3.1
-- **Frontend**: Angular 12
-- **Database**: SQL Server 2019
+- **Backend**: .NET Core 7.0
+- **Frontend**: Angular 19
 - **API Documentation**: Swagger UI
 
 ## Features
